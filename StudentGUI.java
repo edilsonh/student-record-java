@@ -33,6 +33,21 @@ public class StudentGUI extends JFrame {
     JButton process = new JButton("Process Request");
     add(process);
 
+    process.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e){
+        String a = cb.getItemAt(cb.getSelectedIndex());
+        if (a == "Insert") {
+          System.out.println("the insert");
+        } else if (a == "Delete") {
+          System.out.println("the deleter");
+        } else if (a == "Find") {
+          System.out.println("the finder");
+        } else if (a == "Update") {
+          System.out.println("the updater");
+        }
+      }
+    });
+
     pack();
     setVisible(true);
     setSize(300,300);
