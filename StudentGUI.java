@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class StudentGUI extends JFrame {
   public StudentGUI() {
@@ -33,17 +34,25 @@ public class StudentGUI extends JFrame {
     JButton process = new JButton("Process Request");
     add(process);
 
+    HashMap<Integer,String> hm = new HashMap<Integer,String>();
+
     process.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
-        String a = cb.getItemAt(cb.getSelectedIndex());
-        if (a == "Insert") {
-          System.out.println("the insert");
-        } else if (a == "Delete") {
-          System.out.println("the deleter");
-        } else if (a == "Find") {
-          System.out.println("the finder");
-        } else if (a == "Update") {
-          System.out.println("the updater");
+        if (checkInt(idText.getText())) {
+          int num = Integer.parseInt(idText.getText());
+          String a = cb.getItemAt(cb.getSelectedIndex());
+          if (a == "Insert") {
+            System.out.println("the insert");
+            System.out.println(num);
+          } else if (a == "Delete") {
+            System.out.println("the deleter");
+          } else if (a == "Find") {
+            System.out.println("the finder");
+          } else if (a == "Update") {
+            System.out.println("the updater");
+          }
+        } else {
+          JOptionPane.showMessageDialog(new JFrame(),"Please enter a whole number for Id!");
         }
       }
     });
@@ -51,6 +60,15 @@ public class StudentGUI extends JFrame {
     pack();
     setVisible(true);
     setSize(300,300);
+  }
+
+  public boolean checkInt(String s){
+    try {
+      Integer.parseInt(s);
+      return true;
+    } catch (Exception n) {
+      return false;
+    }
   }
 
   public static void main(String[] args) {
