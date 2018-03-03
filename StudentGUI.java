@@ -93,25 +93,31 @@ public class StudentGUI extends JFrame {
               Integer credits[] = {1,2,3,4,5,6};
               Object grades[] = {'A','B','C','D','F'};
               Object c = JOptionPane.showInputDialog(new JFrame(), "How many credits was the class?", null, JOptionPane.QUESTION_MESSAGE, null, credits, credits[0]);
-              Object g = JOptionPane.showInputDialog(new JFrame(), "What was the grade received?", null, JOptionPane.QUESTION_MESSAGE, null, grades, grades[0]);
-              // based on entry, add grades appropiately to student record
-              switch (g.toString()) {
-                case "A": stdnt.courseCompleted(Integer.parseInt(c.toString()),4);
-                          break;
-
-                case "B": stdnt.courseCompleted(Integer.parseInt(c.toString()),3);
-                          break;
-
-                case "C": stdnt.courseCompleted(Integer.parseInt(c.toString()),2);
-                          break;
-
-                case "D": stdnt.courseCompleted(Integer.parseInt(c.toString()),1);
-                          break;
-
-                case "F": stdnt.courseCompleted(Integer.parseInt(c.toString()),0);
-                          break;
+              Object g = null;
+              // value is null is user clicks cancel, prevents courseCompleted if not all values are attained
+              if (c != null) {
+                g = JOptionPane.showInputDialog(new JFrame(), "What was the grade received?", null, JOptionPane.QUESTION_MESSAGE, null, grades, grades[0]);
               }
-              JOptionPane.showMessageDialog(new JFrame(), "Grades have been added. Thank You!");
+              if (g != null) {
+                // based on entry, add grades appropiately to student record
+                switch (g.toString()) {
+                  case "A": stdnt.courseCompleted(Integer.parseInt(c.toString()),4);
+                            break;
+
+                  case "B": stdnt.courseCompleted(Integer.parseInt(c.toString()),3);
+                            break;
+
+                  case "C": stdnt.courseCompleted(Integer.parseInt(c.toString()),2);
+                            break;
+
+                  case "D": stdnt.courseCompleted(Integer.parseInt(c.toString()),1);
+                            break;
+
+                  case "F": stdnt.courseCompleted(Integer.parseInt(c.toString()),0);
+                            break;
+                }
+                JOptionPane.showMessageDialog(new JFrame(), "Grades have been added. Thank You!");
+              }
             }
           }
         } else {
