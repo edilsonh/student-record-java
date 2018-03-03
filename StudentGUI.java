@@ -42,12 +42,29 @@ public class StudentGUI extends JFrame {
           int num = Integer.parseInt(idText.getText());
           String a = cb.getItemAt(cb.getSelectedIndex());
           if (a == "Insert") {
-            System.out.println("the insert");
-            System.out.println(num);
+            if (hm.get(num) == null) {
+              hm.put(num, nameText.getText() + " " + majorText.getText());
+              String success = "Success! the following has been entered:\nId: " + num +
+              "\nName: " + nameText.getText() +
+              "\nMajor: " + majorText.getText();
+              JOptionPane.showMessageDialog(new JFrame(), success);
+            } else {
+              JOptionPane.showMessageDialog(new JFrame(), "That Id is already taken!");
+            }
           } else if (a == "Delete") {
             System.out.println("the deleter");
           } else if (a == "Find") {
-            System.out.println("the finder");
+            String stdnt = hm.get(num);
+            if (stdnt == null) {
+              JOptionPane.showMessageDialog(new JFrame(), "Student not found...");
+            } else {
+              String studentName = stdnt.split(" ")[0];
+              String studentMajor = stdnt.split(" ")[1];
+              String found = "Student Found! Here is their information:\nId: " + num +
+              "\nName: " + studentName +
+              "\nMajor: " + studentMajor;
+              JOptionPane.showMessageDialog(new JFrame(), found);
+            }
           } else if (a == "Update") {
             System.out.println("the updater");
           }
