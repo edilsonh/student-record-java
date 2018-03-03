@@ -34,7 +34,7 @@ public class StudentGUI extends JFrame {
     JButton process = new JButton("Process Request");
     add(process);
 
-    HashMap<Integer,String> hm = new HashMap<Integer,String>();
+    HashMap<Integer,Student> hm = new HashMap<Integer,Student>();
 
     process.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
@@ -43,8 +43,8 @@ public class StudentGUI extends JFrame {
           String selection = cb.getItemAt(cb.getSelectedIndex());
           if (selection == "Insert") {
             if (hm.get(num) == null) {
-              hm.put(num, nameText.getText() + " " + majorText.getText());
-              String success = "Success! the following has been entered:\nId: " + num +
+              hm.put(num, new Student(nameText.getText(), majorText.getText()));
+              String success = "Success! The following has been entered:\nId: " + num +
               "\nName: " + nameText.getText() +
               "\nMajor: " + majorText.getText();
               JOptionPane.showMessageDialog(new JFrame(), success);
@@ -52,7 +52,7 @@ public class StudentGUI extends JFrame {
               JOptionPane.showMessageDialog(new JFrame(), "That Id is already taken!");
             }
           } else if (selection == "Delete") {
-            String stdnt = hm.get(num);
+            Student stdnt = hm.get(num);
             if (stdnt == null) {
               JOptionPane.showMessageDialog(new JFrame(), "Student not found...");
             } else {
@@ -60,15 +60,11 @@ public class StudentGUI extends JFrame {
               JOptionPane.showMessageDialog(new JFrame(), "Student record has been removed!");
             }
           } else if (selection == "Find") {
-            String stdnt = hm.get(num);
+            Student stdnt = hm.get(num);
             if (stdnt == null) {
               JOptionPane.showMessageDialog(new JFrame(), "Student not found...");
             } else {
-              String studentName = stdnt.split(" ")[0];
-              String studentMajor = stdnt.split(" ")[1];
-              String found = "Student Found! Here is their information:\nId: " + num +
-              "\nName: " + studentName +
-              "\nMajor: " + studentMajor;
+              String found = "Student Found! Here is their information:\nId: " + num + "\n" +stdnt.toString();
               JOptionPane.showMessageDialog(new JFrame(), found);
             }
           } else if (selection == "Update") {

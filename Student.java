@@ -1,8 +1,8 @@
 public class Student {
   private String name;
   private String major;
-  private int credits;
-  private int quality;
+  private int credits = 0;
+  private int quality = 0;
 
   public Student(String n, String m){
       name = n;
@@ -14,7 +14,7 @@ public class Student {
     quality += q*c;
   }
 
-  public string toString(){
+  public String toString(){
     double gpa;
     if (credits == 0) {
       gpa = 4.0;
