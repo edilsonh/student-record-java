@@ -42,7 +42,9 @@ public class StudentGUI extends JFrame {
           int num = Integer.parseInt(idText.getText());
           String selection = cb.getItemAt(cb.getSelectedIndex());
           if (selection == "Insert") {
-            if (hm.get(num) == null) {
+            if ((nameText.getText().trim().equals("")) || (majorText.getText().trim().equals(""))) {
+              JOptionPane.showMessageDialog(new JFrame(), "Please fill in all fields!");
+            } else if (hm.get(num) == null) {
               hm.put(num, new Student(nameText.getText(), majorText.getText()));
               String success = "Success! The following has been entered:\nId: " + num +
               "\nName: " + nameText.getText() +
