@@ -1,8 +1,8 @@
 public class Student {
   private String name;
   private String major;
-  private int credits = 0;
-  private int quality = 0;
+  private double credits = 0.0;
+  private double quality = 0.0;
 
   public Student(String n, String m){
       name = n;
@@ -23,6 +23,6 @@ public class Student {
     }
     return "Name: " + this.name +
       "\nMajor: " + this.major +
-      "\nGPA: " + gpa;
+      "\nGPA: " + String.format("%.2f", gpa);
   }
 }
