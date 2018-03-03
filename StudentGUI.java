@@ -40,8 +40,8 @@ public class StudentGUI extends JFrame {
       public void actionPerformed(ActionEvent e){
         if (checkInt(idText.getText())) {
           int num = Integer.parseInt(idText.getText());
-          String a = cb.getItemAt(cb.getSelectedIndex());
-          if (a == "Insert") {
+          String selection = cb.getItemAt(cb.getSelectedIndex());
+          if (selection == "Insert") {
             if (hm.get(num) == null) {
               hm.put(num, nameText.getText() + " " + majorText.getText());
               String success = "Success! the following has been entered:\nId: " + num +
@@ -51,9 +51,9 @@ public class StudentGUI extends JFrame {
             } else {
               JOptionPane.showMessageDialog(new JFrame(), "That Id is already taken!");
             }
-          } else if (a == "Delete") {
+          } else if (selection == "Delete") {
             System.out.println("the deleter");
-          } else if (a == "Find") {
+          } else if (selection == "Find") {
             String stdnt = hm.get(num);
             if (stdnt == null) {
               JOptionPane.showMessageDialog(new JFrame(), "Student not found...");
@@ -65,7 +65,7 @@ public class StudentGUI extends JFrame {
               "\nMajor: " + studentMajor;
               JOptionPane.showMessageDialog(new JFrame(), found);
             }
-          } else if (a == "Update") {
+          } else if (selection == "Update") {
             System.out.println("the updater");
           }
         } else {
