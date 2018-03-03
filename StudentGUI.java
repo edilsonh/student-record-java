@@ -52,7 +52,13 @@ public class StudentGUI extends JFrame {
               JOptionPane.showMessageDialog(new JFrame(), "That Id is already taken!");
             }
           } else if (selection == "Delete") {
-            System.out.println("the deleter");
+            String stdnt = hm.get(num);
+            if (stdnt == null) {
+              JOptionPane.showMessageDialog(new JFrame(), "Student not found...");
+            } else {
+              hm.remove(num);
+              JOptionPane.showMessageDialog(new JFrame(), "Student record has been removed!");
+            }
           } else if (selection == "Find") {
             String stdnt = hm.get(num);
             if (stdnt == null) {
